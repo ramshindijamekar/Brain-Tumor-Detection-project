@@ -11,4 +11,5 @@ jobs:
         run: |
           # Your ML workflow goes here
           pip install -r requirements.txt
-          python Brain_Tumor_Detection.ipynb
+          jupyter nbconvert --execute --inplace Brain_Tumor_Detection.ipynb
+
