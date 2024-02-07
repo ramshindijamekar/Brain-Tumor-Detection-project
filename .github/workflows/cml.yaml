@@ -7,14 +7,17 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install Jupyter Notebook
+      - name: Install Jupyter Notebook and OpenGL libraries
         run: |
           pip install jupyter
+          apt-get update
+          apt-get install -y libgl1-mesa-glx
 
       - name: Train model
         run: |
           # Your ML workflow goes here
           pip install -r requirements.txt
           jupyter nbconvert --execute --inplace Brain_Tumor_Detection.ipynb
+
 
 
