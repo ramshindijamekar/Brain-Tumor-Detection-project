@@ -1,5 +1,7 @@
 name: mlops-Brain_Tumor_Detection
+
 on: [push]
+
 jobs:
   run:
     runs-on: ubuntu-latest
@@ -13,11 +15,18 @@ jobs:
           apt-get update
           apt-get install -y libgl1-mesa-glx
 
+      - name: Copy image from local directory
+        run: |
+          cp C:\\python practice\\machine learning\\brain_tumor\\brain_tumor_dataset\\test\\yes\\Y1.jpg $GITHUB_WORKSPACE/
+        # Replace /path/to/local/image.jpg with the path to your local image
+        # Now you can access image.jpg from your workflow using $GITHUB_WORKSPACE/image.jpg
+
       - name: Train model
         run: |
           # Your ML workflow goes here
           pip install -r requirements.txt
           jupyter nbconvert --execute --inplace Brain_Tumor_Detection.ipynb
+          
 
 
 
